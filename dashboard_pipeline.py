@@ -46,7 +46,8 @@ DIAS_PARADO = 14
 
 
 def carregar_config():
-    cfg = {"meta_vgv_mensal": DEFAULT_META_MENSAL, "pesos": dict(DEFAULT_PESOS), "dias_parado": DIAS_PARADO}
+    cfg = {"meta_vgv_mensal": DEFAULT_META_MENSAL, "pesos": dict(DEFAULT_PESOS),
+           "dias_parado": DIAS_PARADO, "data_corte": None, "ciclo_venda_dias": None}
     try:
         if os.path.exists(CONFIG_FILE):
             with open(CONFIG_FILE, encoding="utf-8") as f:
@@ -58,6 +59,10 @@ def carregar_config():
                     cfg["pesos"] = {str(k).lower(): float(v) for k, v in data["pesos"].items()}
                 if data.get("dias_parado"):
                     cfg["dias_parado"] = int(data["dias_parado"])
+                if data.get("data_corte"):
+                    cfg["data_corte"] = str(data["data_corte"])[:10]
+                if data.get("ciclo_venda_dias"):
+                    cfg["ciclo_venda_dias"] = int(data["ciclo_venda_dias"])
             print(f"Config carregada de {CONFIG_FILE}")
     except Exception as e:
         print(f"Config: usando padrão ({e})")
@@ -94,24 +99,27 @@ def buscar_crm():
 
     todas = []
     pagina = 1
-    while True:
+    MAX_PAGINAS = 200  # trava de segurança: no máximo ~40.000 negócios
+    print("Buscando negocios no RD Station CRM...", flush=True)
+    while pagina <= MAX_PAGINAS:
         url = f"https://crm.rdstation.com/api/v1/deals?token={token}&limit=200&page={pagina}"
         try:
-            r = requests.get(url, timeout=20)
+            r = requests.get(url, timeout=30)
             if r.status_code != 200:
-                print(f"Erro pagina {pagina}: HTTP {r.status_code}")
+                print(f"Erro pagina {pagina}: HTTP {r.status_code}", flush=True)
                 break
             negs = r.json().get("deals", [])
             if not negs:
                 break
             todas.extend(negs)
-            print(f"Pipeline: pagina {pagina} — {len(negs)} negocios")
+            print(f"Pagina {pagina}: {len(negs)} negocios (total acumulado: {len(todas)})", flush=True)
             if len(negs) < 200:
                 break
             pagina += 1
         except Exception as e:
-            print(f"Erro CRM pagina {pagina}: {e}")
+            print(f"Erro CRM pagina {pagina}: {e}", flush=True)
             break
+    print(f"Busca finalizada: {len(todas)} negocios no total.", flush=True)
 
     deals = []
     for n in todas:
@@ -267,9 +275,16 @@ def gerar_dashboard(deals, cfg):
     valor_ganho_total = sum(d["value"] for d in ganhos)
 
     # ── Ciclo de venda médio ──────────────────────────────────────────────
+    # Só conta como ciclo "real" se a negociação foi CRIADA e FECHADA a partir
+    # da data de corte (negócios novos, com datas confiáveis). Negócios do
+    # cadastro retroativo têm criação e fechamento no mesmo dia e distorceriam.
+    data_corte = cfg.get("data_corte")
+    ciclo_manual = cfg.get("ciclo_venda_dias")
     ciclos = []
     for d in ganhos:
         if d["created_at"] and d["closed_at"]:
+            if data_corte and (d["created_at"] < data_corte or d["closed_at"] < data_corte):
+                continue
             try:
                 c = datetime.strptime(d["created_at"], "%Y-%m-%d").date()
                 f = datetime.strptime(d["closed_at"], "%Y-%m-%d").date()
@@ -277,14 +292,26 @@ def gerar_dashboard(deals, cfg):
                     ciclos.append((f - c).days)
             except Exception:
                 pass
-    ciclo_medio = round(sum(ciclos) / len(ciclos)) if ciclos else 0
+    if len(ciclos) >= 5:
+        ciclo_medio = round(sum(ciclos) / len(ciclos))
+        ciclo_fonte = "calculado"
+    elif ciclo_manual:
+        ciclo_medio = ciclo_manual
+        ciclo_fonte = "informado"
+    else:
+        ciclo_medio = round(sum(ciclos) / len(ciclos)) if ciclos else 0
+        ciclo_fonte = "calculado"
 
     # ── Pacing do mês ─────────────────────────────────────────────────────
     hoje = datetime.now()
     mes_tag = hoje.strftime("%Y-%m")
     dias_no_mes = calendar.monthrange(hoje.year, hoje.month)[1]
     dia_atual = hoje.day
-    realizado_mes = sum(d["value"] for d in ganhos if (d["closed_at"] or "").startswith(mes_tag))
+    # Só conta como realizado do mês o que fechou a partir da data de corte
+    # (evita que o cadastro retroativo infle o ritmo do mês).
+    realizado_mes = sum(d["value"] for d in ganhos
+                        if (d["closed_at"] or "").startswith(mes_tag)
+                        and (not data_corte or d["closed_at"] >= data_corte))
     pct_realizado = (realizado_mes / meta_mensal * 100) if meta_mensal else 0
     pct_tempo = dia_atual / dias_no_mes * 100
     esperado_hoje = meta_mensal * pct_tempo / 100
@@ -327,6 +354,22 @@ def gerar_dashboard(deals, cfg):
     # ─────────────────────────────────────────────────────────────────────
     agora = hoje.strftime("%d/%m/%Y às %H:%M")
 
+    # Aviso sobre data de corte / cadastro retroativo
+    banner = ""
+    if data_corte:
+        try:
+            dc = datetime.strptime(data_corte, "%Y-%m-%d").strftime("%d/%m/%Y")
+        except Exception:
+            dc = data_corte
+        extra = " Por enquanto o ciclo está informado manualmente; vira automático quando houver vendas novas suficientes registradas em tempo real." if ciclo_fonte == "informado" else ""
+        banner = ('<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:12px;'
+                  'padding:14px 16px;font-size:13px;color:#7a5b00;margin-bottom:8px;line-height:1.55">'
+                  '<strong>Dados em transição.</strong> Vendas cadastradas de forma retroativa ficam com data '
+                  'de fechamento "de hoje", o que distorceria o ritmo do mês e o ciclo real. Por isso, o '
+                  '<strong>Pacing do mês</strong> e o <strong>Ciclo de venda</strong> consideram apenas '
+                  f'negócios a partir de <strong>{dc}</strong> — quando o time passou a registrar em tempo real.'
+                  f'{extra}</div>')
+
     # Cartões de topo
     cobertura = (pipe_pond / meta_mensal * 100) if meta_mensal else 0
     topo = f"""
@@ -344,7 +387,7 @@ def gerar_dashboard(deals, cfg):
       <div class="card">
         <div class="k-lbl">Ciclo de venda médio</div>
         <div class="k-val">{ciclo_medio} dias</div>
-        <div class="k-sub">da criação até o fechamento ({len(ciclos)} negócios)</div>
+        <div class="k-sub">{"informado manualmente" if ciclo_fonte == "informado" else f"da criação até o fechamento ({len(ciclos)} negócios)"}</div>
       </div>
       <div class="card">
         <div class="k-lbl">Negócios em aberto</div>
@@ -467,6 +510,7 @@ def gerar_dashboard(deals, cfg):
     <h1>Pipeline & Previsibilidade</h1>
   </div>
   <div class="sub">Dados do RD Station CRM — atualizado em {agora}</div>
+  {banner}
 
   <div class="sec">Visão geral</div>
   <div class="grid g4">{topo}</div>
