@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pipeline & Previsibilidade — IM Incorporadora</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f5f5f7;--card:#fff;--t:#1d1d1f;--t2:#6e6e73;--t3:#aeaeb2;--bd:#e3e3e6;
+  --bl:#0071e3;--gr:#28cd41;--rd:#ff3b30;--or:#ff9500;--yellow:#ffcc00;--pu:#5e5ce6;
+  --green:#28cd41;--red:#ff3b30;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased;padding:24px 16px 60px}
+.wrap{max-width:1180px;margin:0 auto}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.logo{width:34px;height:34px;border-radius:8px;background:var(--bl);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+h1{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.sub{color:var(--t2);font-size:13px;margin-bottom:28px}
+.sec{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);margin:34px 0 14px}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){.g4,.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.g4,.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px}
+.k-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--t3);margin-bottom:8px}
+.k-val{font-size:25px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.k-sub{font-size:12px;color:var(--t2);margin-top:6px}
+.hero{background:var(--bl);color:#fff;border:none}
+.hero .k-lbl{color:rgba(255,255,255,.7)}
+.hero .k-sub{color:rgba(255,255,255,.85)}
+.bar{height:9px;background:#ededf0;border-radius:5px;overflow:hidden;margin:10px 0 6px}
+.bar.dark{background:rgba(255,255,255,.25)}
+.bar>div{height:100%;border-radius:5px;transition:width .4s}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:12px 16px;font-size:13.5px;border-bottom:1px solid var(--bd)}
+th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--t3);background:#fafafc}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700}
+.minibar{height:7px;background:#ededf0;border-radius:4px;overflow:hidden;min-width:90px}
+.minibar>div{height:100%}
+.tag{font-size:11px;color:var(--t2)}
+.empty{color:var(--t3);font-size:14px;padding:16px;background:var(--card);border:1px dashed var(--bd);border-radius:14px}
+.note{font-size:12px;color:var(--t2);margin:6px 0 0}
+.foot{margin-top:40px;font-size:11px;color:var(--t3);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="logo">IM</div>
+    <h1>Pipeline & Previsibilidade</h1>
+  </div>
+  <div class="sub">Dados do RD Station CRM — atualizado em 29/06/2026 às 10:27</div>
+
+  <div class="sec">Visão geral</div>
+  <div class="grid g4">
+      <div class="card hero">
+        <div class="k-lbl">Previsão de fechamento (pipeline ponderado)</div>
+        <div class="k-val">R$ 11.635.750,00</div>
+        <div class="bar dark"><div style="width:100%;background:#fff"></div></div>
+        <div class="k-sub">555% da meta mensal (R$ 2.095.240) — de R$ 21.245.000,00 em aberto</div>
+      </div>
+      <div class="card">
+        <div class="k-lbl">Win Rate</div>
+        <div class="k-val" style="color:var(--red)">0%</div>
+        <div class="k-sub">11 ganhos / 6142 perdidos</div>
+      </div>
+      <div class="card">
+        <div class="k-lbl">Ciclo de venda médio</div>
+        <div class="k-val">32 dias</div>
+        <div class="k-sub">da criação até o fechamento (5 negócios)</div>
+      </div>
+      <div class="card">
+        <div class="k-lbl">Negócios em aberto</div>
+        <div class="k-val">145</div>
+        <div class="k-sub">R$ 21.245.000,00 no total da esteira</div>
+      </div>
+    </div>
+
+  <div class="sec">Ritmo do mês (pacing)</div>
+  <div class="grid">
+      <div class="card">
+        <div class="k-lbl">Pacing — Junho (dia 29 de 30)</div>
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+          <div class="k-val">R$ 3.700.000,00</div>
+          <div class="k-sub">realizado de R$ 2.095.240 de meta</div>
+        </div>
+        <div class="bar"><div style="width:100.0%;background:var(--green)"></div></div>
+        <div class="k-sub">
+          <span class="pill" style="background:var(--green)1a;color:var(--green)">No ritmo da meta</span>
+          &nbsp; Você está em <strong>177%</strong> da meta e o mês está em <strong>97%</strong>.
+          No ritmo do calendário, o esperado hoje seria <strong>R$ 2.025.399</strong>.
+        </div>
+      </div>
+    </div>
+
+  <div class="sec">Pipeline ponderado por etapa</div>
+  <table>
+          <thead><tr><th>Etapa</th><th class="num">Peso</th><th class="num">Qtd</th><th class="num">Valor bruto</th><th class="num">Ponderado</th><th>Peso visual</th></tr></thead>
+          <tbody><tr>
+              <td><strong>LEADs</strong></td>
+              <td class="num">5%</td>
+              <td class="num">54</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700">R$ 0,00</td>
+              <td style="width:160px"><div class="minibar"><div style="width:0%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>EM CONTATO</strong></td>
+              <td class="num">10%</td>
+              <td class="num">69</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700">R$ 0,00</td>
+              <td style="width:160px"><div class="minibar"><div style="width:0%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>AGENDAMENTO</strong></td>
+              <td class="num">20%</td>
+              <td class="num">16</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700">R$ 0,00</td>
+              <td style="width:160px"><div class="minibar"><div style="width:0%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>ATENDIMENTO REALIZADO</strong></td>
+              <td class="num">35%</td>
+              <td class="num">1</td>
+              <td class="num">R$ 245.000,00</td>
+              <td class="num" style="font-weight:700">R$ 85.750,00</td>
+              <td style="width:160px"><div class="minibar"><div style="width:1%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>NEGOCIAÇÃO</strong></td>
+              <td class="num">55%</td>
+              <td class="num">5</td>
+              <td class="num">R$ 21.000.000,00</td>
+              <td class="num" style="font-weight:700">R$ 11.550.000,00</td>
+              <td style="width:160px"><div class="minibar"><div style="width:100%;background:var(--bl)"></div></div></td>
+            </tr></tbody>
+        </table>
+        <p class="note">Ponderado = valor do negócio × probabilidade da etapa. É a previsão realista de fechamento. Ajuste os pesos no arquivo <strong>config_pipeline.json</strong>.</p>
+
+  <div class="sec">Previsão por vendedor</div>
+  <table>
+          <thead><tr><th>Vendedor</th><th class="num">Abertos</th><th class="num">Pipeline</th><th class="num">Previsão</th><th class="num">Ganhos (qtd)</th><th class="num">Ganho R$</th></tr></thead>
+          <tbody><tr>
+              <td><strong>Jonathan Vitorino</strong></td>
+              <td class="num">30</td>
+              <td class="num">R$ 21.000.000,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 11.550.000,00</td>
+              <td class="num">4</td>
+              <td class="num" style="color:var(--gr)">R$ 5.440.000,00</td>
+            </tr><tr>
+              <td><strong>Jéssica Cararo</strong></td>
+              <td class="num">1</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">5</td>
+              <td class="num" style="color:var(--gr)">R$ 4.070.094,00</td>
+            </tr><tr>
+              <td><strong>João Vasconcelos</strong></td>
+              <td class="num">33</td>
+              <td class="num">R$ 245.000,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 85.750,00</td>
+              <td class="num">1</td>
+              <td class="num" style="color:var(--gr)">R$ 570.000,00</td>
+            </tr><tr>
+              <td><strong>Dirlei Aparecido de Andrade</strong></td>
+              <td class="num">14</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Nicolas Sbalqueiro Dias</strong></td>
+              <td class="num">31</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Lucas  Palombo</strong></td>
+              <td class="num">16</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Adriano Gonçalves</strong></td>
+              <td class="num">20</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Giovana</strong></td>
+              <td class="num">0</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">1</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr></tbody>
+        </table>
+
+  <div class="grid g2" style="margin-top:8px">
+    <div>
+      <div class="sec" style="margin-top:18px">Motivos de perda</div>
+      <table>
+          <thead><tr><th>Motivo da perda</th><th class="num">Qtd</th><th class="num">%</th><th class="num">Valor perdido</th></tr></thead>
+          <tbody><tr>
+              <td>Não tem mais interesse</td>
+              <td class="num">3666</td>
+              <td class="num">60%</td>
+              <td class="num">R$ 476.861.569,60</td>
+            </tr><tr>
+              <td>Não respondeu</td>
+              <td class="num">772</td>
+              <td class="num">13%</td>
+              <td class="num">R$ 112.651.278,61</td>
+            </tr><tr>
+              <td>Optou por outro empreendimento</td>
+              <td class="num">560</td>
+              <td class="num">9%</td>
+              <td class="num">R$ 104.516.537,68</td>
+            </tr><tr>
+              <td>Engano</td>
+              <td class="num">511</td>
+              <td class="num">8%</td>
+              <td class="num">R$ 56.221.208,05</td>
+            </tr><tr>
+              <td>Falta de entrada</td>
+              <td class="num">266</td>
+              <td class="num">4%</td>
+              <td class="num">R$ 165.506.551,73</td>
+            </tr><tr>
+              <td>Renda não alcançou o mínimo</td>
+              <td class="num">193</td>
+              <td class="num">3%</td>
+              <td class="num">R$ 17.322.352,80</td>
+            </tr><tr>
+              <td>Criança</td>
+              <td class="num">35</td>
+              <td class="num">1%</td>
+              <td class="num">R$ 8.962.438,99</td>
+            </tr><tr>
+              <td>Não informado</td>
+              <td class="num">32</td>
+              <td class="num">1%</td>
+              <td class="num">R$ 0,00</td>
+            </tr><tr>
+              <td>Prazo de entrega</td>
+              <td class="num">29</td>
+              <td class="num">0%</td>
+              <td class="num">R$ 4.835.315,13</td>
+            </tr><tr>
+              <td>Localização</td>
+              <td class="num">27</td>
+              <td class="num">0%</td>
+              <td class="num">R$ 15.202.963,61</td>
+            </tr><tr>
+              <td>Metragem incompatível</td>
+              <td class="num">17</td>
+              <td class="num">0%</td>
+              <td class="num">R$ 0,00</td>
+            </tr><tr>
+              <td>Parceria</td>
+              <td class="num">14</td>
+              <td class="num">0%</td>
+              <td class="num">R$ 0,00</td>
+            </tr><tr>
+              <td>teste</td>
+              <td class="num">13</td>
+              <td class="num">0%</td>
+              <td class="num">R$ 1.569.152,38</td>
+            </tr><tr>
+              <td>Falta de dados de contato</td>
+              <td class="num">7</td>
+              <td class="num">0%</td>
+              <td class="num">R$ 0,00</td>
+            </tr></tbody>
+        </table>
+        <p class="note">Os motivos só aparecem se forem preenchidos no RD Station — é a higiene de CRM que o João Olivério recomenda.</p>
+    </div>
+    <div>
+      <div class="sec" style="margin-top:18px">Total ganho no período</div>
+      <div class="card">
+        <div class="k-lbl">Receita ganha (negócios fechados)</div>
+        <div class="k-val" style="color:var(--gr)">R$ 10.080.094,00</div>
+        <div class="k-sub">11 negócios ganhos · valor em risco parado: R$ 0,00</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">Negócios parados (sem movimentação há +14 dias)</div>
+  <table>
+          <thead><tr><th>Etapa</th><th>Vendedor</th><th class="num">Valor</th><th class="num">Parado há</th></tr></thead>
+          <tbody><tr>
+              <td>LEADs</td>
+              <td>Adriano Gonçalves</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">16 dias</span></td>
+            </tr><tr>
+              <td>LEADs</td>
+              <td>Nicolas Sbalqueiro Dias</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">17 dias</span></td>
+            </tr><tr>
+              <td>EM CONTATO</td>
+              <td>Lucas  Palombo</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">17 dias</span></td>
+            </tr><tr>
+              <td>EM CONTATO</td>
+              <td>Lucas  Palombo</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">17 dias</span></td>
+            </tr><tr>
+              <td>LEADs</td>
+              <td>Adriano Gonçalves</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">19 dias</span></td>
+            </tr><tr>
+              <td>LEADs</td>
+              <td>Adriano Gonçalves</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">19 dias</span></td>
+            </tr><tr>
+              <td>LEADs</td>
+              <td>Adriano Gonçalves</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">26 dias</span></td>
+            </tr><tr>
+              <td>LEADs</td>
+              <td>Adriano Gonçalves</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">27 dias</span></td>
+            </tr><tr>
+              <td>LEADs</td>
+              <td>Adriano Gonçalves</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">19 dias</span></td>
+            </tr><tr>
+              <td>AGENDAMENTO</td>
+              <td>Adriano Gonçalves</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">28 dias</span></td>
+            </tr><tr>
+              <td>LEADs</td>
+              <td>Adriano Gonçalves</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">20 dias</span></td>
+            </tr><tr>
+              <td>AGENDAMENTO</td>
+              <td>Adriano Gonçalves</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">32 dias</span></td>
+            </tr></tbody>
+        </table>
+
+  <div class="foot">Dashboard de pipeline · gerado automaticamente · IM Incorporadora</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "meta_vgv_mensal": 2095240.14,
+  "dias_parado": 14,
+  "pesos": {
+    "lead": 5,
+    "contato": 10,
+    "agendamento": 20,
+    "atendimento": 35,
+    "visita": 35,
+    "proposta": 45,
+    "negocia": 55,
+    "fecha": 100,
+    "ganho": 100
+  }
+}

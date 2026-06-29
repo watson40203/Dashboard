@@ -1,0 +1,53 @@
+name: Gerar Dashboard
+
+on:
+  push:
+    branches: [ main ]      # Republica quando você salvar arquivos (ex: config)
+  schedule:
+    - cron: '0 */6 * * *'   # Atualiza a cada 6 horas
+  workflow_dispatch:         # Botão para rodar manualmente
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar arquivos do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Gerar dashboard principal
+        env:
+          TOKEN_CRM: ${{ secrets.TOKEN_CRM }}
+          CLIENT_ID_MKT: ${{ secrets.CLIENT_ID_MKT }}
+          CLIENT_SECRET_MKT: ${{ secrets.CLIENT_SECRET_MKT }}
+          REFRESH_TOKEN_MKT: ${{ secrets.REFRESH_TOKEN_MKT }}
+          TOKEN_PUBLICO_MKT: ${{ secrets.TOKEN_PUBLICO_MKT }}
+          TOKEN_PRIVADO_MKT: ${{ secrets.TOKEN_PRIVADO_MKT }}
+          TOKEN_CONVERSAS: ${{ secrets.TOKEN_CONVERSAS }}
+        run: python dashboard_github.py
+
+      - name: Renomear para index.html
+        run: cp dashboard_unificado.html index.html
+
+      - name: Gerar dashboard de pipeline
+        env:
+          TOKEN_CRM: ${{ secrets.TOKEN_CRM }}
+        run: python dashboard_pipeline.py
+
+      - name: Publicar no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          keep_files: true
