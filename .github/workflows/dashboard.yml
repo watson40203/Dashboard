@@ -1,0 +1,42 @@
+name: Gerar Dashboard de Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar arquivos do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Gerar dashboard de pipeline
+        env:
+          TOKEN_CRM: ${{ secrets.TOKEN_CRM }}
+        run: python dashboard_pipeline.py
+
+      - name: Renomear para index.html
+        run: cp dashboard_pipeline.html index.html
+
+      - name: Publicar no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          keep_files: true
