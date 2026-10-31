@@ -54,31 +54,31 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
     <div class="logo">IM</div>
     <h1>Pipeline & Previsibilidade</h1>
   </div>
-  <div class="sub">Dados do RD Station CRM — atualizado em 31/10/2026 às 03:09</div>
-  <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:14px 16px;font-size:13px;color:#7a5b00;margin-bottom:8px;line-height:1.55"><strong>Dados em transição.</strong> Vendas cadastradas de forma retroativa ficam com data de fechamento "de hoje", o que distorceria o ritmo do mês e o ciclo real. Por isso, o <strong>Pacing do mês</strong> e o <strong>Ciclo de venda</strong> consideram apenas negócios a partir de <strong>01/07/2026</strong> — quando o time passou a registrar em tempo real. Por enquanto o ciclo está informado manualmente; vira automático quando houver vendas novas suficientes registradas em tempo real.</div>
+  <div class="sub">Dados do RD Station CRM — atualizado em 31/10/2026 às 11:24</div>
+  <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:14px 16px;font-size:13px;color:#7a5b00;margin-bottom:8px;line-height:1.55"><strong>Dados em transição.</strong> Vendas cadastradas de forma retroativa ficam com data de fechamento "de hoje", o que distorceria o ritmo do mês e o ciclo real. Por isso, o <strong>Pacing do mês</strong> e o <strong>Ciclo de venda</strong> consideram apenas negócios a partir de <strong>01/07/2026</strong> — quando o time passou a registrar em tempo real.</div>
 
   <div class="sec">Visão geral</div>
   <div class="grid g4">
       <div class="card hero">
         <div class="k-lbl">Previsão de fechamento (pipeline ponderado)</div>
-        <div class="k-val">R$ 0,00</div>
-        <div class="bar dark"><div style="width:0%;background:#fff"></div></div>
-        <div class="k-sub">0% da meta mensal (R$ 2.095.240) — de R$ 0,00 em aberto</div>
+        <div class="k-val">R$ 104.451.556,72</div>
+        <div class="bar dark"><div style="width:100%;background:#fff"></div></div>
+        <div class="k-sub">4985% da meta mensal (R$ 2.095.240) — de R$ 1.199.448.237,09 em aberto</div>
       </div>
       <div class="card">
         <div class="k-lbl">Win Rate</div>
-        <div class="k-val" style="color:var(--red)">0%</div>
-        <div class="k-sub">0 ganhos / 0 perdidos</div>
+        <div class="k-val" style="color:var(--green)">100%</div>
+        <div class="k-sub">44 ganhos / 0 perdidos</div>
       </div>
       <div class="card">
         <div class="k-lbl">Ciclo de venda médio</div>
-        <div class="k-val">60 dias</div>
-        <div class="k-sub">informado manualmente</div>
+        <div class="k-val">11 dias</div>
+        <div class="k-sub">da criação até o fechamento (10 negócios)</div>
       </div>
       <div class="card">
         <div class="k-lbl">Negócios em aberto</div>
-        <div class="k-val">0</div>
-        <div class="k-sub">R$ 0,00 no total da esteira</div>
+        <div class="k-val">7398</div>
+        <div class="k-sub">R$ 1.199.448.237,09 no total da esteira</div>
       </div>
     </div>
 
@@ -87,23 +87,282 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
       <div class="card">
         <div class="k-lbl">Pacing — Outubro (dia 31 de 31)</div>
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-          <div class="k-val">R$ 0,00</div>
+          <div class="k-val">R$ 1.796.000,00</div>
           <div class="k-sub">realizado de R$ 2.095.240 de meta</div>
         </div>
-        <div class="bar"><div style="width:0.0%;background:var(--red)"></div></div>
+        <div class="bar"><div style="width:85.7%;background:var(--yellow)"></div></div>
         <div class="k-sub">
-          <span class="pill" style="background:var(--red)1a;color:var(--red)">Abaixo do ritmo</span>
-          &nbsp; Você está em <strong>0%</strong> da meta e o mês está em <strong>100%</strong>.
+          <span class="pill" style="background:var(--yellow)1a;color:var(--yellow)">Abaixo do ritmo</span>
+          &nbsp; Você está em <strong>86%</strong> da meta e o mês está em <strong>100%</strong>.
           No ritmo do calendário, o esperado hoje seria <strong>R$ 2.095.240</strong>.
         </div>
       </div>
     </div>
 
   <div class="sec">Pipeline ponderado por etapa</div>
-  <div class="empty">Nenhum negócio em aberto no momento.</div>
+  <table>
+          <thead><tr><th>Etapa</th><th class="num">Peso</th><th class="num">Qtd</th><th class="num">Valor bruto</th><th class="num">Ponderado</th><th>Peso visual</th></tr></thead>
+          <tbody><tr>
+              <td><strong>LEADs ENTRADA</strong></td>
+              <td class="num">5%</td>
+              <td class="num">6241</td>
+              <td class="num">R$ 952.256.357,48</td>
+              <td class="num" style="font-weight:700">R$ 47.612.817,87</td>
+              <td style="width:160px"><div class="minibar"><div style="width:100%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>LEAD NAO RESPONDEU</strong></td>
+              <td class="num">5%</td>
+              <td class="num">12</td>
+              <td class="num">R$ 8,00</td>
+              <td class="num" style="font-weight:700">R$ 0,40</td>
+              <td style="width:160px"><div class="minibar"><div style="width:0%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>EM CONTATO</strong></td>
+              <td class="num">10%</td>
+              <td class="num">294</td>
+              <td class="num">R$ 33.067.289,92</td>
+              <td class="num" style="font-weight:700">R$ 3.306.728,99</td>
+              <td style="width:160px"><div class="minibar"><div style="width:7%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>AGUARDANDO CONTATO</strong></td>
+              <td class="num">10%</td>
+              <td class="num">666</td>
+              <td class="num">R$ 107.177.569,76</td>
+              <td class="num" style="font-weight:700">R$ 10.717.756,98</td>
+              <td style="width:160px"><div class="minibar"><div style="width:23%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>AGENDAMENTO MARCADO</strong></td>
+              <td class="num">20%</td>
+              <td class="num">21</td>
+              <td class="num">R$ 6,00</td>
+              <td class="num" style="font-weight:700">R$ 1,20</td>
+              <td style="width:160px"><div class="minibar"><div style="width:0%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>REAGENDAMENTO</strong></td>
+              <td class="num">20%</td>
+              <td class="num">5</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700">R$ 0,00</td>
+              <td style="width:160px"><div class="minibar"><div style="width:0%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>ATENDIMENTO REALIZADO</strong></td>
+              <td class="num">35%</td>
+              <td class="num">128</td>
+              <td class="num">R$ 80.033.009,93</td>
+              <td class="num" style="font-weight:700">R$ 28.011.553,48</td>
+              <td style="width:160px"><div class="minibar"><div style="width:59%;background:var(--bl)"></div></div></td>
+            </tr><tr>
+              <td><strong>EM NEGOCIAÇÃO</strong></td>
+              <td class="num">55%</td>
+              <td class="num">31</td>
+              <td class="num">R$ 26.913.996,00</td>
+              <td class="num" style="font-weight:700">R$ 14.802.697,80</td>
+              <td style="width:160px"><div class="minibar"><div style="width:31%;background:var(--bl)"></div></div></td>
+            </tr></tbody>
+        </table>
+        <p class="note">Ponderado = valor do negócio × probabilidade da etapa. É a previsão realista de fechamento. Ajuste os pesos no arquivo <strong>config_pipeline.json</strong>.</p>
 
   <div class="sec">Previsão por vendedor</div>
-  <div class="empty">Sem dados de vendedores.</div>
+  <table>
+          <thead><tr><th>Vendedor</th><th class="num">Abertos</th><th class="num">Pipeline</th><th class="num">Previsão</th><th class="num">Ganhos (qtd)</th><th class="num">Ganho R$</th></tr></thead>
+          <tbody><tr>
+              <td><strong>João Vasconcelos</strong></td>
+              <td class="num">1160</td>
+              <td class="num">R$ 372.656.910,54</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 31.734.443,42</td>
+              <td class="num">20</td>
+              <td class="num" style="color:var(--gr)">R$ 14.277.527,99</td>
+            </tr><tr>
+              <td><strong>Jonathan  Vitorino</strong></td>
+              <td class="num">1203</td>
+              <td class="num">R$ 260.599.217,76</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 31.851.961,29</td>
+              <td class="num">14</td>
+              <td class="num" style="color:var(--gr)">R$ 10.025.000,00</td>
+            </tr><tr>
+              <td><strong>Maria Eduarda</strong></td>
+              <td class="num">1462</td>
+              <td class="num">R$ 321.572.934,75</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 20.268.372,67</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Jéssica Cararo</strong></td>
+              <td class="num">51</td>
+              <td class="num">R$ 8.182.562,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 3.084.583,50</td>
+              <td class="num">5</td>
+              <td class="num" style="color:var(--gr)">R$ 4.070.094,00</td>
+            </tr><tr>
+              <td><strong>Paola Chagas</strong></td>
+              <td class="num">146</td>
+              <td class="num">R$ 96.202.396,62</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 4.810.119,83</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Renata Cavalheiro </strong></td>
+              <td class="num">865</td>
+              <td class="num">R$ 82.160.911,42</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 4.108.045,57</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Watson Messias Slonski </strong></td>
+              <td class="num">10</td>
+              <td class="num">R$ 2.638.800,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 923.580,00</td>
+              <td class="num">3</td>
+              <td class="num" style="color:var(--gr)">R$ 2.638.000,00</td>
+            </tr><tr>
+              <td><strong>Matheus Pires</strong></td>
+              <td class="num">54</td>
+              <td class="num">R$ 9.807.946,94</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 3.432.781,43</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Giovana</strong></td>
+              <td class="num">26</td>
+              <td class="num">R$ 3.219.730,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 1.231.380,50</td>
+              <td class="num">1</td>
+              <td class="num" style="color:var(--gr)">R$ 643.000,00</td>
+            </tr><tr>
+              <td><strong>Lucas  Palombo</strong></td>
+              <td class="num">1241</td>
+              <td class="num">R$ 29.894.229,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 1.494.711,45</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Thiago Silva</strong></td>
+              <td class="num">192</td>
+              <td class="num">R$ 1.923.945,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 316.644,40</td>
+              <td class="num">1</td>
+              <td class="num" style="color:var(--gr)">R$ 460.000,00</td>
+            </tr><tr>
+              <td><strong>Adriano Gonçalves</strong></td>
+              <td class="num">321</td>
+              <td class="num">R$ 1.758.000,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 475.800,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Carolina Rita</strong></td>
+              <td class="num">3</td>
+              <td class="num">R$ 329.000,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 180.950,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Kauan Rempel Ratacheski</strong></td>
+              <td class="num">105</td>
+              <td class="num">R$ 377.000,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 131.950,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>lucas</strong></td>
+              <td class="num">141</td>
+              <td class="num">R$ 2.141.083,13</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 107.054,16</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Vinicius Lima</strong></td>
+              <td class="num">4</td>
+              <td class="num">R$ 1.953.000,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 97.650,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Renate</strong></td>
+              <td class="num">10</td>
+              <td class="num">R$ 1.942.569,93</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 97.128,50</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Julio </strong></td>
+              <td class="num">263</td>
+              <td class="num">R$ 1.500.000,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 75.000,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Dirlei Aparecido de Andrade</strong></td>
+              <td class="num">39</td>
+              <td class="num">R$ 588.000,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 29.400,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Amanda  Diorama</strong></td>
+              <td class="num">1</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Thaisy</strong></td>
+              <td class="num">1</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Andrade</strong></td>
+              <td class="num">21</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Jean Bernard</strong></td>
+              <td class="num">70</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>leonardobritto@imincorporadora.com.br</strong></td>
+              <td class="num">1</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Agatha Moreira</strong></td>
+              <td class="num">3</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>BIANCALEANDRO</strong></td>
+              <td class="num">1</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Zenilda Fernandes Barbosa</strong></td>
+              <td class="num">3</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr><tr>
+              <td><strong>Richard </strong></td>
+              <td class="num">1</td>
+              <td class="num">R$ 0,00</td>
+              <td class="num" style="font-weight:700;color:var(--bl)">R$ 0,00</td>
+              <td class="num">0</td>
+              <td class="num" style="color:var(--gr)">R$ 0,00</td>
+            </tr></tbody>
+        </table>
 
   <div class="grid g2" style="margin-top:8px">
     <div>
@@ -114,14 +373,142 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
       <div class="sec" style="margin-top:18px">Total ganho no período</div>
       <div class="card">
         <div class="k-lbl">Receita ganha (negócios fechados)</div>
-        <div class="k-val" style="color:var(--gr)">R$ 0,00</div>
-        <div class="k-sub">0 negócios ganhos · valor em risco parado: R$ 0,00</div>
+        <div class="k-val" style="color:var(--gr)">R$ 32.113.621,99</div>
+        <div class="k-sub">44 negócios ganhos · valor em risco parado: R$ 1.187.749.192,09</div>
       </div>
     </div>
   </div>
 
   <div class="sec">Negócios parados (sem movimentação há +14 dias)</div>
-  <div class="empty">Nenhum negócio parado há mais de 14 dias. Pipeline saudável!</div>
+  <table>
+          <thead><tr><th>Etapa</th><th>Vendedor</th><th class="num">Valor</th><th class="num">Parado há</th></tr></thead>
+          <tbody><tr>
+              <td>LEADs ENTRADA</td>
+              <td>João Vasconcelos</td>
+              <td class="num">R$ 11.707.719,18</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Renata Cavalheiro </td>
+              <td class="num">R$ 7.117.540,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>ATENDIMENTO REALIZADO</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 7.000.000,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">58 dias</span></td>
+            </tr><tr>
+              <td>ATENDIMENTO REALIZADO</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 7.000.000,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">58 dias</span></td>
+            </tr><tr>
+              <td>EM NEGOCIAÇÃO</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 7.000.000,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">79 dias</span></td>
+            </tr><tr>
+              <td>EM NEGOCIAÇÃO</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 7.000.000,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">61 dias</span></td>
+            </tr><tr>
+              <td>ATENDIMENTO REALIZADO</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 5.000.000,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">58 dias</span></td>
+            </tr><tr>
+              <td>EM NEGOCIAÇÃO</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 5.000.000,00</td>
+              <td class="num"><span style="color:var(--or);font-weight:700">22 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>João Vasconcelos</td>
+              <td class="num">R$ 3.244.187,23</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">86 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Maria Eduarda</td>
+              <td class="num">R$ 2.841.964,24</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 2.785.268,97</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 2.562.226,15</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Lucas  Palombo</td>
+              <td class="num">R$ 2.266.000,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 2.042.964,57</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>João Vasconcelos</td>
+              <td class="num">R$ 2.006.381,92</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>João Vasconcelos</td>
+              <td class="num">R$ 2.006.381,92</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 2.006.381,92</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>ATENDIMENTO REALIZADO</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 2.000.000,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">94 dias</span></td>
+            </tr><tr>
+              <td>ATENDIMENTO REALIZADO</td>
+              <td>Watson Messias Slonski </td>
+              <td class="num">R$ 2.000.000,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">94 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>João Vasconcelos</td>
+              <td class="num">R$ 1.970.263,62</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>ATENDIMENTO REALIZADO</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 1.700.000,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">94 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Maria Eduarda</td>
+              <td class="num">R$ 1.625.030,00</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 1.619.570,15</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>João Vasconcelos</td>
+              <td class="num">R$ 1.619.570,15</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr><tr>
+              <td>LEADs ENTRADA</td>
+              <td>Jonathan  Vitorino</td>
+              <td class="num">R$ 1.610.103,66</td>
+              <td class="num"><span style="color:var(--rd);font-weight:700">122 dias</span></td>
+            </tr></tbody>
+        </table><p class="note">Mostrando os 25 maiores de 7296 negócios parados.</p>
 
   <div class="foot">Dashboard de pipeline · gerado automaticamente · IM Incorporadora</div>
 </div>
